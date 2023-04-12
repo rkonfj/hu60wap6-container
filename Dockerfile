@@ -6,7 +6,7 @@ RUN git clone --recursive https://gitee.com/hu60t/hu60wap6.git;cd hu60wap6;git s
 
 FROM alpine:3.17
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
-RUN apk add supervisor nginx php php-fpm php81-pdo_mysql php81-mbstring php81-intl
+RUN apk add supervisor nginx php php-fpm php81-pdo_mysql php81-mbstring php81-intl php81-gd
 ADD supervisord.conf /etc/supervisord.conf
 ADD nginx.conf /etc/nginx/http.d/default.conf
 WORKDIR /app
