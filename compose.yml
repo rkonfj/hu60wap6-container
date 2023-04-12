@@ -1,0 +1,25 @@
+services:
+  hu60wap6:
+    image: rkonfj/hu60wap6:42a8fac
+    container_name: hu60wap6
+    environment:
+    - MYSQL_HOST=mysql
+    - MYSQL_DB=hu60
+    - MYSQL_USER=root
+    - MYSQL_PASSWORD=123456
+    ports:
+    - 8080:80
+  mysql:
+    image: mysql:8.0.25
+    container_name: mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=123456
+    restart: always
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+    cap_add:
+    - SYS_NICE
+    volumes:
+    - ./data:/var/lib/mysql
