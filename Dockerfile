@@ -12,5 +12,5 @@ RUN sed -i "s/define('DB_NAME', 'hu60')/define('DB_NAME', getenv('MYSQL_DB'))/" 
     sed -i "s/define('DB_PASS', 'root')/define('DB_PASS', getenv('MYSQL_PASSWORD'))/" hu60wap6/src/config/db.php;\
     sed -i "s/define('DB_HOST', 'localhost')/define('DB_HOST', getenv('MYSQL_HOST'))/" hu60wap6/src/config/db.php;
 RUN sed -i "s/;clear_env = no/clear_env = no/" /etc/php81/php-fpm.d/www.conf
-ENTRYPOINT ["supervisord"]
+ENTRYPOINT ["supervisord", "-c", "/etc/supervisord.conf"]
 
